@@ -7,8 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Barakatih Kitchen</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <!-- Add animate.css for animations -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 </head>
 
 <body>
@@ -22,32 +23,120 @@
             <li><a href="#delivery">Delivery</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
-            <li><a href="login.html">Login/Registrasi</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li>
+                <div class="cart-icon">
+                    <i class='bx bx-cart' id="cart-btn"></i>
+                    <span class="cart-count">0</span>
+                </div>
+            </li>
         </ul>
     </header>
 
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar">
+        <div class="cart-header">
+            <h2>Your Cart</h2>
+            <i class='bx bx-x close-cart'></i>
+        </div>
+        <div class="cart-items">
+            <!-- Cart items will be added here dynamically -->
+        </div>
+        <div class="cart-total">
+            <h3>Total: <span id="cart-total-amount">Rp 0</span></h3>
+        </div>
+        <div class="cart-buttons">
+            <button id="clear-cart" class="btn">Clear Cart</button>
+            <button id="checkout-btn" class="btn">Checkout</button>
+        </div>
+    </div>
+
+    <!-- Overlay -->
+    <div class="overlay"></div>
+
+    <!-- Checkout Modal -->
+    <div class="checkout-modal">
+        <div class="checkout-header">
+            <h2>Checkout</h2>
+            <i class='bx bx-x close-checkout'></i>
+        </div>
+        <div class="checkout-content">
+            <form id="checkout-form">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="address">Delivery Address</label>
+                    <textarea id="address" name="address" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="payment">Payment Method</label>
+                    <select id="payment" name="payment" required>
+                        <option value="">-- Select Payment Method --</option>
+                        <option value="bank">Bank Transfer</option>
+                        <option value="cod">Cash on Delivery</option>
+                        <option value="ovo">OVO</option>
+                        <option value="gopay">GoPay</option>
+                    </select>
+                </div>
+                <div class="checkout-summary">
+                    <h3>Order Summary</h3>
+                    <div class="checkout-items">
+                        <!-- Checkout items will be added here dynamically -->
+                    </div>
+                    <div class="checkout-total">
+                        <p>Subtotal: <span id="checkout-subtotal">Rp 0</span></p>
+                        <p>Delivery Fee: <span id="checkout-delivery">Rp 15,000</span></p>
+                        <p class="total">Total: <span id="checkout-total">Rp 0</span></p>
+                    </div>
+                </div>
+                <button type="submit" class="btn checkout-btn">Place Order</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Order Confirmation Modal -->
+    <div class="confirmation-modal">
+        <div class="confirmation-content animate__animated animate__zoomIn">
+            <i class='bx bx-check-circle'></i>
+            <h2>Order Placed Successfully!</h2>
+            <p>Thank you for your order. Your order has been received and is being processed.</p>
+            <p>Order ID: <span id="order-id"></span></p>
+            <button class="btn close-confirmation">Continue Shopping</button>
+        </div>
+    </div>
+
     <!--home-->
     <section class="home" id="home">
-        <div class="home-text">
+        <div class="home-text animate__animated animate__fadeInLeft">
             <span>Welcome To</span>
             <h1>Barakatih Kitchen</h1>
             <h2>We made by order</h2>
             <a href="#shop" class="btn">Order Now!</a>
         </div>
 
-        <div class="home-img">
+        <div class="home-img animate__animated animate__fadeInRight">
             <img src="cake home.png" alt="">
         </div>
     </section>
     
    <!--shop-->
    <section class="shop" id="shop">
-    <div class="heading">
+    <div class="heading animate__animated animate__fadeInUp">
         <span>Shop Now</span>
         <h1>Cake Shop</h1>
     </div>
     <div class="shop-container">
-        <div class="box">
+        <div class="box animate__animated animate__fadeInUp">
             <div class="box-img">
                 <img src="cake 1.png" alt="">
             </div>
@@ -60,10 +149,10 @@
             </div>
             <h2>Cookies</h2>
             <span>Rp.30,000.00</span>
-            <a href="https://wa.me/6281225500632/" class="btn">Order Now</a>
+            <button class="btn add-to-cart" data-id="1" data-name="Cookies" data-price="30000" data-img="cake 1.png">Add to Cart</button>
         </div>
 
-        <div class="box">
+        <div class="box animate__animated animate__fadeInUp" style="animation-delay: 0.1s;">
             <div class="box-img">
                 <img src="cake 2.png" alt="">
             </div>
@@ -76,10 +165,10 @@
             </div>
             <h2>Cupcake</h2>
             <span>Rp.35,000.00</span>
-            <a href="https://wa.me/6281225500632/" class="btn">Order Now</a>
+            <button class="btn add-to-cart" data-id="2" data-name="Cupcake" data-price="35000" data-img="cake 2.png">Add to Cart</button>
         </div>
 
-        <div class="box">
+        <div class="box animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
             <div class="box-img">
                 <img src="cake 3.png" alt="">
             </div>
@@ -92,10 +181,10 @@
             </div>
             <h2>Birthday Cake</h2>
             <span>Rp.200,000.00</span>
-            <a href="https://wa.me/6281225500632/" class="btn">Order Now</a>
+            <button class="btn add-to-cart" data-id="3" data-name="Birthday Cake" data-price="200000" data-img="cake 3.png">Add to Cart</button>
         </div>
 
-        <div class="box">
+        <div class="box animate__animated animate__fadeInUp" style="animation-delay: 0.3s;">
             <div class="box-img">
                 <img src="cake 4.png" alt="">
             </div>
@@ -108,10 +197,10 @@
             </div>
             <h2>Kue Kering</h2>
             <span>Rp.60,000.00</span>
-            <a href="https://wa.me/6281225500632/" class="btn">Order Now</a>
+            <button class="btn add-to-cart" data-id="4" data-name="Kue Kering" data-price="60000" data-img="cake 4.png">Add to Cart</button>
         </div>
 
-        <div class="box">
+        <div class="box animate__animated animate__fadeInUp" style="animation-delay: 0.4s;">
             <div class="box-img">
                 <img src="cake 5.png" alt="">
             </div>
@@ -124,10 +213,10 @@
             </div>
             <h2>Brownies</h2>
             <span>Rp.80,000.00</span>
-            <a href="https://wa.me/6281225500632/" class="btn">Order Now</a>
+            <button class="btn add-to-cart" data-id="5" data-name="Brownies" data-price="80000" data-img="cake 5.png">Add to Cart</button>
         </div>
 
-        <div class="box">
+        <div class="box animate__animated animate__fadeInUp" style="animation-delay: 0.5s;">
             <div class="box-img">
                 <img src="cake 6.png" alt="">
             </div>
@@ -140,10 +229,10 @@
             </div>
             <h2>Lidah Kucing</h2>
             <span>Rp.60,000.00</span>
-            <a href="https://wa.me/6281225500632/" class="btn">Order Now</a>
+            <button class="btn add-to-cart" data-id="6" data-name="Lidah Kucing" data-price="60000" data-img="cake 6.png">Add to Cart</button>
         </div>
 
-        <div class="box">
+        <div class="box animate__animated animate__fadeInUp" style="animation-delay: 0.6s;">
             <div class="box-img">
                 <img src="cake 7.png" alt="">
             </div>
@@ -156,10 +245,10 @@
             </div>
             <h2>Puding</h2>
             <span>Rp.70,000.00</span>
-            <a href="https://wa.me/6281225500632/" class="btn">Order Now</a>
+            <button class="btn add-to-cart" data-id="7" data-name="Puding" data-price="70000" data-img="cake 7.png">Add to Cart</button>
         </div>
 
-        <div class="box">
+        <div class="box animate__animated animate__fadeInUp" style="animation-delay: 0.7s;">
             <div class="box-img">
                 <img src="cake 8.png" alt="">
             </div>
@@ -172,10 +261,10 @@
             </div>
             <h2>Strudel Pisang Coklat</h2>
             <span>Rp.90,000.00</span>
-            <a href="https://wa.me/6281225500632/" class="btn">Order Now</a>
+            <button class="btn add-to-cart" data-id="8" data-name="Strudel Pisang Coklat" data-price="90000" data-img="cake 8.png">Add to Cart</button>
         </div>
 
-        <div class="box">
+        <div class="box animate__animated animate__fadeInUp" style="animation-delay: 0.8s;">
             <div class="box-img">
                 <img src="cake 9.png" alt="">
             </div>
@@ -188,10 +277,10 @@
             </div>
             <h2>Chiffon Cake</h2>
             <span>Rp.70,000.00</span>
-            <a href="https://wa.me/6281225500632/" class="btn">Order Now</a>
+            <button class="btn add-to-cart" data-id="9" data-name="Chiffon Cake" data-price="70000" data-img="cake 9.png">Add to Cart</button>
         </div>
 
-        <div class="box">
+        <div class="box animate__animated animate__fadeInUp" style="animation-delay: 0.9s;">
             <div class="box-img">
                 <img src="cake 10.png" alt="">
             </div>
@@ -204,22 +293,22 @@
             </div>
             <h2>Brownies Cheesecake</h2>
             <span>Rp.80,000.00</span>
-            <a href="https://wa.me/6281225500632/" class="btn">Order Now</a>
+            <button class="btn add-to-cart" data-id="10" data-name="Brownies Cheesecake" data-price="80000" data-img="cake 10.png">Add to Cart</button>
         </div>
     </div>
    </section>
 
    <!--Delivery-->
    <section class="delivery" id="delivery">
-    <div class="heading">
+    <div class="heading animate__animated animate__fadeInUp">
         <span>Get Now</span>
         <h1>Order With Gojek</h1>
     </div>
     <div class="container">
-        <div class="delivery-img">
+        <div class="delivery-img animate__animated animate__fadeInLeft">
             <img src="delivery foto.jpg" alt="">
         </div>
-        <div class="delivery-text">
+        <div class="delivery-text animate__animated animate__fadeInRight">
             <h2>Today Deserve Delivery</h2>
             <p>Barakatih Kitchen kini hadir di Gojek, membuat roti segar dan lezat dapat dinikmati di rumah dengan mudah dan praktis! </p>
             <p>Dengan berbagai pilihan roti yang menggugah selera, Anda dapat memesan langsung melalui aplikasi Gojek dan menikmati hidangan manis favorit Anda tanpa perlu repot keluar rumah.</p>
@@ -230,10 +319,10 @@
   
     <!--about-->
     <section class="about" id="about">
-        <div class="about-img">
+        <div class="about-img animate__animated animate__fadeInLeft">
             <img src="about foto.jpg" alt="">
         </div>
-        <div class="about-text">
+        <div class="about-text animate__animated animate__fadeInRight">
             <h2>3 years of serving communities</h2>
             <p>Barakatih Kitchen adalah perusahaan yang bergerak di bidang pembuatan dan penjualan produk roti dan kue berkualitas tinggi. Didirikan dengan visi untuk memberikan pengalaman rasa yang unik dan menggugah selera, kami menghadirkan berbagai jenis roti, kue, dan pastry yang dibuat dengan bahan-bahan terbaik dan teknik pembuatan yang tradisional serta modern.</p>
             <p>Melalui website ini, kami berharap dapat membantu memperluas jangkauan bisnis Anda, meningkatkan kepuasan pelanggan, dan mendorong pertumbuhan penjualan. Dengan dukungan fitur-fitur yang sesuai dengan kebutuhan industri bakery, website ini akan memberikan fondasi yang kokoh bagi kesuksesan online bakery Anda.</p>
@@ -256,6 +345,20 @@
         </div>
         <p>&#169; AR.RA All Right Reserved.</p>
     </section>
+
+    <!-- Add notification toast -->
+    <div class="toast">
+        <div class="toast-content">
+            <i class='bx bx-check-circle'></i>
+            <div class="message">
+                <span class="text text-1">Success</span>
+                <span class="text text-2">Item added to cart</span>
+            </div>
+        </div>
+        <i class='bx bx-x close'></i>
+        <div class="progress"></div>
+    </div>
+
     <script src="main.js"></script>
 </body>
 </html>
