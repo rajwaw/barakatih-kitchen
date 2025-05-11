@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Barakatih Kitchen</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+</head>
+
+<body>
+    <header>
+        <a href="index.html" class="logo"><img src="img logo.png" alt=""></a>
+        <div class="bx bx-menu" id="menu-icon"></div>
+
+        <ul class="navbar">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#shop">Shop</a></li>
+            <li><a href="#delivery">Delivery</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li>
+                <div class="cart-icon">
+                    <i class='bx bx-cart' id="cart-btn"></i>
+                    <span class="cart-count">0</span>
+                </div>
+            </li>
+        </ul>
+    </header>
+
+    <section class="login-container">
+        <div class="form-container">
+            <div class="form-tabs">
+                <button class="tab-btn active" data-target="login-form">Login</button>
+                <button class="tab-btn" data-target="register-form">Register</button>
+            </div>
+            
+            <div class="form-content active" id="login-form">
+                <h2>Login to Your Account</h2>
+                <form id="login-user-form">
+                    <div class="form-group">
+                        <label for="login-email"><i class='bx bx-envelope'></i></label>
+                        <input type="email" id="login-email" placeholder="Email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password"><i class='bx bx-lock-alt'></i></label>
+                        <input type="password" id="login-password" placeholder="Password" required>
+                    </div>
+                    <div class="form-footer">
+                        <label class="remember-me">
+                            <input type="checkbox" id="remember"> Remember me
+                        </label>
+                        <a href="#" class="forgot-password">Forgot Password?</a>
+                    </div>
+                    <button type="submit" class="btn login-btn">Login</button>
+                </form>
+            </div>
+            
+            <div class="form-content" id="register-form">
+                <h2>Create New Account</h2>
+                <form id="register-user-form">
+                    <div class="form-group">
+                        <label for="register-name"><i class='bx bx-user'></i></label>
+                        <input type="text" id="register-name" placeholder="Full Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="register-email"><i class='bx bx-envelope'></i></label>
+                        <input type="email" id="register-email" placeholder="Email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="register-password"><i class='bx bx-lock-alt'></i></label>
+                        <input type="password" id="register-password" placeholder="Password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="register-confirm-password"><i class='bx bx-lock-alt'></i></label>
+                        <input type="password" id="register-confirm-password" placeholder="Confirm Password" required>
+                    </div>
+                    <div class="form-footer">
+                        <label class="terms">
+                            <input type="checkbox" id="terms" required> I agree to the <a href="#">Terms & Conditions</a>
+                        </label>
+                    </div>
+                    <button type="submit" class="btn register-btn">Register</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="login-footer">
+        <div class="social">
+            <a href="https://www.instagram.com/bara.katihkitchen?igsh=Zjg0NmJzd3Bka3N5"><i class='bx bxl-instagram'></i></a>
+            <a href="https://wa.me/6281225500632/"><i class='bx bxl-whatsapp'></i></a>
+            <a href="#"><i class='bx bxl-facebook'></i></a>
+        </div>
+
+        <div class="links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms Of Use</a>
+            <a href="#">Our Company</a>
+        </div>
+        <p>&#169; AR.RA All Right Reserved.</p>
+    </footer>
+
+    <script src="login.js"></script>
+</body>
+</html>
